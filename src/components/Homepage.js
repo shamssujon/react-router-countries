@@ -11,7 +11,7 @@ const Homepage = () => {
                     Total countries: {countries.length}
                 </h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 mt-12">
-                    {countries.map((country) => console.log(country))}
+                    {/* {countries.map((country) => console.log(country))} */}
                     {countries.map((country) => (
                         <Country key={country.cca3} country={country}></Country>
                     ))}

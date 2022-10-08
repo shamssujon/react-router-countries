@@ -5,6 +5,7 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import Aboutpage from "./components/Aboutpage";
+import CountryDetails from "./components/CountryDetails";
 import Homepage from "./components/Homepage";
 import Layout from "./layouts/Layout";
 
@@ -21,6 +22,12 @@ function App() {
                     loader={async () => fetch("https://restcountries.com/v3.1/all")}
                     element={<Homepage></Homepage>}></Route>
                 <Route path="/about" element={<Aboutpage></Aboutpage>}></Route>
+                <Route
+                    path="/country/:countryId"
+                    loader={async ({ params }) =>
+                        fetch(`https://restcountries.com/v3.1/name/${params.countryId}`)
+                    }
+                    element={<CountryDetails></CountryDetails>}></Route>
             </Route>
         )
     );
