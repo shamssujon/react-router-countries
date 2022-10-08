@@ -12,8 +12,14 @@ function App() {
     const router = createBrowserRouter(
         createRoutesFromElements(
             <Route path="/" element={<Layout></Layout>}>
-                <Route path="/" element={<Homepage></Homepage>}></Route>
-                <Route path="/home" element={<Homepage></Homepage>}></Route>
+                <Route
+                    path="/"
+                    loader={async () => fetch("https://restcountries.com/v3.1/all")}
+                    element={<Homepage></Homepage>}></Route>
+                <Route
+                    path="/home"
+                    loader={async () => fetch("https://restcountries.com/v3.1/all")}
+                    element={<Homepage></Homepage>}></Route>
                 <Route path="/about" element={<Aboutpage></Aboutpage>}></Route>
             </Route>
         )
