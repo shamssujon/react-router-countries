@@ -1,14 +1,26 @@
-import logo from "./logo.svg";
-import "./App.css";
+import {
+    createBrowserRouter,
+    createRoutesFromElements,
+    Route,
+    RouterProvider,
+} from "react-router-dom";
+import Aboutpage from "./components/Aboutpage";
+import Homepage from "./components/Homepage";
+import Layout from "./layouts/Layout";
 
 function App() {
+    const router = createBrowserRouter(
+        createRoutesFromElements(
+            <Route path="/" element={<Layout></Layout>}>
+                <Route path="/" element={<Homepage></Homepage>}></Route>
+                <Route path="/home" element={<Homepage></Homepage>}></Route>
+                <Route path="/about" element={<Aboutpage></Aboutpage>}></Route>
+            </Route>
+        )
+    );
     return (
         <div className="App">
-            <header className="flex min-h-screen flex-col items-center justify-center bg-slate-900 text-center">
-                <img src={logo} alt="" className="mx-auto h-auto w-40 motion-safe:animate-spin" />
-                <h1 className="mb-4 text-6xl font-bold text-sky-300">Welcome!!</h1>
-                <h4 className="text-2xl font-bold text-sky-100/80"> Happy coding... </h4>
-            </header>
+            <RouterProvider router={router}></RouterProvider>
         </div>
     );
 }
